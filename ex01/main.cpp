@@ -1,9 +1,9 @@
-#include "include/Bureaucrat.hpp"
+#include "includes/Form.hpp"
 #include <exception>
 
 int main()
 {
-    std::cout << "---test valid---" << std::endl;
+        std::cout << "---test valid---" << std::endl;
     try{
         Bureaucrat john("john", 1);
         // std::cout << john << std::endl;

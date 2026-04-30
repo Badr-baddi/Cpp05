@@ -1,5 +1,5 @@
-#ifndef BUREAUCRAT.CPP
-# define BUREAUCRAT.CPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <string>
 #include <iostream>
@@ -11,6 +11,7 @@ class Bureaucrat {
         int   _grade;
     public:
         Bureaucrat();
+        Bureaucrat(const std::string name, int _grade);
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
@@ -24,14 +25,15 @@ class Bureaucrat {
         class GradeTooHighException : public std::exception{
             public:
                 virtual const char* what() const throw() {
-                    return "Error: Age it's very high!!!";
+                    return "Grade is too high (above 1)!";
                 }
-        }
+        };
         class GradeTooLowException : public std::exception{
-            virtual const  char* what() const throw(){
-                return "Error: Age it's very low!!!";
+            public:
+                virtual const  char* what() const throw(){
+                    return "Grade is too low (below 150)!";
             }
-        }
+        };
 };
 
 #endif

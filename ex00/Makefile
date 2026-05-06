@@ -1,6 +1,6 @@
-NAME = Form
+NAME = Bureaucrat
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
@@ -11,7 +11,7 @@ all: $(NAME)
 ${NAME}: ${OBJ}
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp Form.hpp
+%.o: %.cpp Bureaucrat.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

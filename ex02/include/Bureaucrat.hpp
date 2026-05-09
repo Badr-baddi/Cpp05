@@ -5,25 +5,27 @@
 #include <iostream>
 #include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
         const std::string _name;
         int   _grade;
-    public:
         Bureaucrat();
-        Bureaucrat(const std::string name, int _grade);
+    public:
+        Bureaucrat(const std::string &name, int _grade);
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);
-        ~Bureaucrat();
+        virtual ~Bureaucrat();
 
         std::string getName() const;
         int getGrade() const;
 
         void increment();
         void decrement();
-        void signForm(Form &f);
+        void signForm(AForm &f);
+
+        void executeForm(AForm const & form);
 
         class GradeTooHighException : public std::exception{
             public:

@@ -8,7 +8,7 @@
 class Bureaucrat;
 
 class Form {
-    private:
+    protected:
         const std::string _name_;
         bool _isSigned;
         const int _gradeSigned;
@@ -18,7 +18,9 @@ class Form {
         Form(const std::string name, int signGrade, int exeGrade);
         Form(const Form &other);
         Form &operator=(const Form &other);
-        ~Form();
+        virtual ~Form(){}
+
+        virtual execute(Bureaucrat const & executor) const= 0;
 
         std::string getName() const;
         bool        getIssigned() const;

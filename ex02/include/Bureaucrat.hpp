@@ -25,7 +25,7 @@ class Bureaucrat {
         void decrement();
         void signForm(AForm &f);
 
-        void executeForm(AForm const & form);
+        void executeForm(AForm const &form);
 
         class GradeTooHighException : public std::exception{
             public:

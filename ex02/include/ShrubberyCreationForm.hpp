@@ -1,7 +1,7 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
-#include "include/AForm.hpp"
+#include "AForm.hpp"
 #include <string>
 
 class Bureaucrat;

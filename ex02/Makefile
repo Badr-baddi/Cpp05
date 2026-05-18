@@ -1,6 +1,6 @@
-NAME = Form
+NAME = AForm
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
@@ -11,7 +11,7 @@ all: $(NAME)
 ${NAME}: ${OBJ}
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp Form.hpp
+%.o: %.cpp Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

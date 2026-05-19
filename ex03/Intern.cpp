@@ -9,37 +9,40 @@ Intern::Intern(const Intern &other) { (void)other; }
 Intern &Intern::operator=(const Intern &other) { (void)other; return *this; }
 Intern::~Intern() {}
 
-AForm* Intern::makeForm(const std::string &formName, const std::string &target) {
+AForm* Intern::createShrubbery(const std::string &target) const {
+    std::cout << "Intern creates shrubbery creation" << std::endl;
+    return new ShrubberyCreationForm(target);
+}
 
+AForm* Intern::createRobotomy(const std::string &target) const {
+    std::cout << "Intern creates robotomy request" << std::endl;
+    return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::createPresidential(const std::string &target) const {
+    std::cout << "Intern creates presidential pardon" << std::endl;
+    return new PresidentialPardonForm(target);
+}
+
+AForm* Intern::makeForm(const std::string &formName, const std::string &target) {
     std::string formTypes[3] = {
         "shrubbery creation",
         "robotomy request",
         "presidential pardon"
     };
 
-    int formIndex = -1;
-
+    FormCreatorFn creators[3] = {
+        &Intern::createShrubbery,
+        &Intern::createRobotomy,
+        &Intern::createPresidential
+    };
 
     for (int i = 0; i < 3; i++) {
         if (formTypes[i] == formName) {
-            formIndex = i;
-            break;
+            return (this->*creators[i])(target);
         }
     }
 
-
-    switch (formIndex) {
-        case 0:
-            std::cout << "Intern creates shrubbery creation" << std::endl;
-            return new ShrubberyCreationForm(target);
-        case 1:
-            std::cout << "Intern creates robotomy request" << std::endl;
-            return new RobotomyRequestForm(target);
-        case 2:
-            std::cout << "Intern creates presidential pardon" << std::endl;
-            return new PresidentialPardonForm(target);
-        default:
-            std::cout << "Error: Intern cannot create form '" << formName << "' because it doesn't exist!" << std::endl;
-            return NULL;
-    }
+    std::cout << "Error: Intern cannot create form '" << formName << "' because it doesn't exist!" << std::endl;
+    return NULL;
 }
